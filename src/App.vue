@@ -18,6 +18,13 @@
       <label for="file" class="input-plus">+</label>
     </ul>
   </div>
+
+  <div v-if="nowTab == 0">내용0</div>
+  <div v-if="nowTab == 1">내용1</div>
+  <div v-if="nowTab == 2">내용2</div>
+  <button @click="nowTab = 0">버튼0</button>
+  <button @click="nowTab = 1">버튼1</button>
+  <button @click="nowTab = 2">버튼2</button>
 </template>
 
 <script>
@@ -30,7 +37,8 @@ export default {
   data() {
     return {
       postdata: postdata,
-      count: 0,
+      moreCount: 0,
+      nowTab: 0,
     };
   },
   components: {
@@ -39,11 +47,11 @@ export default {
   methods: {
     more() {
       axios
-        .get(`https://codingapple1.github.io/vue/more${this.count}.json`)
+        .get(`https://codingapple1.github.io/vue/more${this.moreCount}.json`)
         .then((result) => {
           //console.log(result.data);
           this.postdata.push(result.data);
-          this.count++;
+          this.moreCount++;
         });
     },
   },
