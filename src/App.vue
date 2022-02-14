@@ -9,26 +9,19 @@
     <img src="./assets/logo.png" class="logo" />
   </div>
 
-  <Container :postdata="postdata" :step="step" />
+  <Container :postdata="postdata" :step="step" :imgUrl="imgUrl" />
   <button @click="more">더보기</button>
-
-  <div class="footer">
-    <ul class="footer-button-plus">
-      <input type="file" id="file" class="inputfile" />
-      <label for="file" class="input-plus">+</label>
-    </ul>
-  </div>
 
   <button @click="step = 0">버튼0</button>
   <button @click="step = 1">버튼1</button>
   <button @click="step = 2">버튼2</button>
 
-  <!-- <div v-if="nowTab == 0">내용0</div>
-  <div v-if="nowTab == 1">내용1</div>
-  <div v-if="nowTab == 2">내용2</div>
-  <button @click="nowTab = 0">버튼0</button>
-  <button @click="nowTab = 1">버튼1</button>
-  <button @click="nowTab = 2">버튼2</button> -->
+  <div class="footer">
+    <ul class="footer-button-plus">
+      <input @change="upload" type="file" id="file" class="inputfile" />
+      <label for="file" class="input-plus">+</label>
+    </ul>
+  </div>
 </template>
 
 <script>
@@ -42,8 +35,8 @@ export default {
     return {
       postdata: postdata,
       moreCount: 0,
-      //nowTab: 0,
       step: 0,
+      imgUrl: "",
     };
   },
   components: {
@@ -58,6 +51,14 @@ export default {
           this.postdata.push(result.data);
           this.moreCount++;
         });
+    },
+    upload(e) {
+      let myFile = e.target.files;
+      console.log(myFile[0]);
+      let url = URL.createObjectURL(myFile[0]);
+      console.log(url);
+      this.imgUrl = url;
+      this.step = 1;
     },
   },
 };
