@@ -29,7 +29,14 @@
         :style="{ backgroundImage: `url(${imgUrl})` }"
       ></div>
       <div class="write">
-        <textarea class="write-box">write!</textarea>
+        <!-- 내가 한 방법 (초기에 write!가 안나타난다. 변수를 사용해서) -->
+        <!-- <textarea v-model="text" @input="$emit('text', text)" class="write-box">
+write!</textarea
+        > -->
+        <!-- 선생님 정답 (따로 변수를 안 만들어도 된다) -->
+        <textarea @input="$emit('text', $event.target.value)" class="write-box">
+write!</textarea
+        >
       </div>
     </div>
   </div>
@@ -40,6 +47,11 @@ import Post from "./Post.vue";
 
 export default {
   name: "Container",
+  data() {
+    return {
+      // text: "",
+    };
+  },
   props: {
     postdata: Array,
     step: Number,

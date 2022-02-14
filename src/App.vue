@@ -4,12 +4,18 @@
       <li>Cancel</li>
     </ul>
     <ul class="header-button-right">
-      <li>Next</li>
+      <li v-if="step == 1" @click="step++">Next</li>
+      <li v-if="step == 2" @click="publish">발행</li>
     </ul>
     <img src="./assets/logo.png" class="logo" />
   </div>
 
-  <Container :postdata="postdata" :step="step" :imgUrl="imgUrl" />
+  <Container
+    :postdata="postdata"
+    :step="step"
+    :imgUrl="imgUrl"
+    @text="myText = $event"
+  />
   <button @click="more">더보기</button>
 
   <button @click="step = 0">버튼0</button>
@@ -37,6 +43,7 @@ export default {
       moreCount: 0,
       step: 0,
       imgUrl: "",
+      myText: "",
     };
   },
   components: {
@@ -59,6 +66,20 @@ export default {
       console.log(url);
       this.imgUrl = url;
       this.step = 1;
+    },
+    publish() {
+      var myPost = {
+        name: "Kim Hyun",
+        userImage: "https://placeimg.com/100/100/arch",
+        postImage: this.imgUrl,
+        likes: 36,
+        date: "May 15",
+        liked: false,
+        content: this.myText,
+        filter: "perpetua",
+      };
+      this.postdata.unshift(myPost);
+      this.step = 0;
     },
   },
 };
