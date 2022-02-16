@@ -11,6 +11,7 @@
   </div>
 
   <Container
+    :filterName="filterName"
     :postdata="postdata"
     :step="step"
     :imgUrl="imgUrl"
@@ -44,7 +45,14 @@ export default {
       step: 0,
       imgUrl: "",
       myText: "",
+      filterName: "",
     };
+  },
+  mounted() {
+    this.emitter.on("filterName", (a) => {
+      console.log(a);
+      this.filterName = a;
+    });
   },
   components: {
     Container,
@@ -76,7 +84,7 @@ export default {
         date: "May 15",
         liked: false,
         content: this.myText,
-        filter: "perpetua",
+        filter: this.filterName,
       };
       this.postdata.unshift(myPost);
       this.step = 0;

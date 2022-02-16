@@ -10,6 +10,7 @@
     <!-- 필터선택페이지 -->
     <div v-if="step == 1">
       <div
+        :class="filterName"
         class="upload-image"
         :style="{ backgroundImage: `url(${imgUrl})` }"
       ></div>
@@ -39,6 +40,7 @@
     <!-- 글작성페이지 -->
     <div v-if="step == 2">
       <div
+        :class="filterName"
         class="upload-image"
         :style="{ backgroundImage: `url(${imgUrl})` }"
       ></div>
@@ -99,6 +101,7 @@ export default {
     postdata: Array,
     step: Number,
     imgUrl: String,
+    filterName: String,
   },
   components: {
     Post,

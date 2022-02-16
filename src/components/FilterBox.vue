@@ -2,8 +2,11 @@
   <div
     :class="filter + ` filter-item`"
     :style="`background-image: url(${imgUrl})`"
+    @click="fire"
   >
     <slot></slot>
+
+    <!-- <button @click="fire">버튼</button> -->
 
     <!-- Named Slots 기능 -->
     <!-- <slot name="a"></slot>
@@ -26,9 +29,14 @@
 <script>
 export default {
   name: "filterbox",
+  methods: {
+    fire() {
+      this.emitter.emit("filterName", this.filter);
+    },
+  },
   data() {
     return {
-      msg: "hello", // Slot Props 기능
+      //msg: "hello", // Slot Props 기능
     };
   },
   props: {

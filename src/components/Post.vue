@@ -5,6 +5,7 @@
       <span class="profile-name">{{ postdata.name }}</span>
     </div>
     <div
+      :class="postdata.filter"
       class="post-body"
       :style="{ backgroundImage: `url(${postdata.postImage})` }"
     ></div>
