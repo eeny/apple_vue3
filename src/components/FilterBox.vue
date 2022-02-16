@@ -2,7 +2,16 @@
   <div
     :class="filter + ` filter-item`"
     :style="`background-image: url(${imgUrl})`"
-  ></div>
+  >
+    <slot></slot>
+
+    <!-- Named Slots 기능 -->
+    <!-- <slot name="a"></slot>
+    <slot name="b"></slot> -->
+
+    <!-- Slot Props 기능 -->
+    <!-- <slot :msg="msg"></slot> -->
+  </div>
 
   <!-- FilterBox.vue에서 반복문을 돌린 경우 -->
   <!-- <div
@@ -17,6 +26,11 @@
 <script>
 export default {
   name: "filterbox",
+  data() {
+    return {
+      msg: "hello", // Slot Props 기능
+    };
+  },
   props: {
     imgUrl: String,
     filter: String,

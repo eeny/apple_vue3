@@ -20,7 +20,19 @@
           :filters="filters"
           v-for="filter in filters"
           :key="filter"
-        ></FilterBox>
+        >
+          <span>{{ filter }}</span>
+
+          <!-- Named Slots 기능 -->
+
+          <!-- <template v-slot:a> 데이터1 </template>
+          <template v-slot:b> 데이터2 </template> -->
+
+          <!-- Slot Props 기능 -->
+          <!-- <template v-slot:default="slotPropsMsg">
+            {{ slotPropsMsg.msg }}
+          </template> -->
+        </FilterBox>
       </div>
     </div>
 
