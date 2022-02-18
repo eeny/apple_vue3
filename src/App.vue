@@ -10,6 +10,9 @@
     <img src="./assets/logo.png" class="logo" />
   </div>
 
+  <h4>안녕 {{ $store.state.name }}</h4>
+  <button @click="$store.state.name = '박'">버튼</button>
+
   <Container
     :filterName="filterName"
     :postdata="postdata"
