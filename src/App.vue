@@ -10,8 +10,9 @@
     <img src="./assets/logo.png" class="logo" />
   </div>
 
-  <h4>안녕 {{ $store.state.name }}</h4>
-  <button @click="$store.state.name = '박'">버튼</button>
+  <h4>안녕 {{ $store.state.name }} {{ $store.state.age }}</h4>
+  <button @click="$store.commit('changeName')">이름버튼</button>
+  <button @click="$store.commit('plusAge', 10)">나이버튼</button>
 
   <Container
     :filterName="filterName"

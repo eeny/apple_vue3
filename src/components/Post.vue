@@ -8,9 +8,13 @@
       :class="postdata.filter"
       class="post-body"
       :style="{ backgroundImage: `url(${postdata.postImage})` }"
+      @click="$store.commit('countLikes', idx)"
     ></div>
     <div class="post-content">
-      <p>{{ postdata.likes }} Likes</p>
+      <!-- <p>{{ postdata.likes }} Likes</p> -->
+      <!-- props 방식 -->
+      <p>{{ $store.state.likes[idx] }} Likes</p>
+      <!-- Vuex 방식 -->
       <p>
         <strong>{{ postdata.name }}</strong> {{ postdata.content }}
       </p>
@@ -24,6 +28,7 @@ export default {
   name: "Post",
   props: {
     postdata: Object,
+    idx: Number,
   },
 };
 </script>

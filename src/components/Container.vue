@@ -2,7 +2,7 @@
   <div>
     <!-- 저번시간에 만든거 -->
     <div v-if="step == 0">
-      <Post :postdata="a" v-for="(a, i) in postdata" :key="i" />
+      <Post :postdata="a" :idx="i" v-for="(a, i) in postdata" :key="i" />
     </div>
     <!-- <Post :postdata="postdata[1]" />
     <Post :postdata="postdata[2]" /> -->
