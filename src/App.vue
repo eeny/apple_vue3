@@ -10,12 +10,13 @@
     <img src="./assets/logo.png" class="logo" />
   </div>
 
-  <h4>안녕 {{ $store.state.name }} {{ $store.state.age }}</h4>
+  <!-- Vuex 예시용 코드 -->
+  <!-- <h4>안녕 {{ $store.state.name }} {{ $store.state.age }}</h4>
   <button @click="$store.commit('changeName')">이름버튼</button>
-  <button @click="$store.commit('plusAge', 10)">나이버튼</button>
-
-  <p>{{ $store.state.more }}</p>
-  <button @click="$store.dispatch('getData')">더보기</button>
+  <button @click="$store.commit('plusAge', 10)">나이버튼</button> 
+  
+   <p>{{ $store.state.more }}</p>
+  <button @click="$store.dispatch('getData')">더보기</button> -->
 
   <Container
     :filterName="filterName"
@@ -24,11 +25,12 @@
     :imgUrl="imgUrl"
     @text="myText = $event"
   />
+
   <button @click="more">더보기</button>
 
-  <button @click="step = 0">버튼0</button>
-  <button @click="step = 1">버튼1</button>
-  <button @click="step = 2">버튼2</button>
+  <!-- methods VS computed 비교 예시용 코드 -->
+  <p>{{ now() }} {{ now2 }} {{ counter }}</p>
+  <button @click="counter++">버튼</button>
 
   <div class="footer">
     <ul class="footer-button-plus">
@@ -53,6 +55,7 @@ export default {
       imgUrl: "",
       myText: "",
       filterName: "",
+      counter: 0,
     };
   },
   mounted() {
@@ -63,6 +66,11 @@ export default {
   },
   components: {
     Container,
+  },
+  computed: {
+    now2() {
+      return new Date(); // 현재 시간 출력
+    },
   },
   methods: {
     more() {
@@ -95,6 +103,9 @@ export default {
       };
       this.postdata.unshift(myPost);
       this.step = 0;
+    },
+    now() {
+      return new Date(); // 현재 시간 출력
     },
   },
 };
