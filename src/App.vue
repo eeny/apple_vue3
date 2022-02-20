@@ -18,6 +18,12 @@
    <p>{{ $store.state.more }}</p>
   <button @click="$store.dispatch('getData')">더보기</button> -->
 
+  <!-- Vuex - mapState, mapMutations 예시용 코드 -->
+  <p>{{ newName }} {{ age }} {{ likes }}</p>
+
+  <h4>안녕 {{ $store.state.age }}</h4>
+  <button @click="plusAge(10)">나이버튼</button>
+
   <Container
     :filterName="filterName"
     :postdata="postdata"
@@ -27,10 +33,6 @@
   />
 
   <button @click="more">더보기</button>
-
-  <!-- methods VS computed 비교 예시용 코드 -->
-  <p>{{ now() }} {{ now2 }} {{ counter }}</p>
-  <button @click="counter++">버튼</button>
 
   <div class="footer">
     <ul class="footer-button-plus">
@@ -44,6 +46,7 @@
 import Container from "./components/Container.vue";
 import postdata from "./assets/postdata.js";
 import axios from "axios";
+import { mapMutations, mapState } from "vuex";
 
 export default {
   name: "App",
@@ -68,9 +71,11 @@ export default {
     Container,
   },
   computed: {
-    now2() {
-      return new Date(); // 현재 시간 출력
+    name() {
+      return this.$store.state.name;
     },
+    ...mapState(["name", "age", "likes"]),
+    ...mapState({ newName: "name" }),
   },
   methods: {
     more() {
@@ -104,9 +109,7 @@ export default {
       this.postdata.unshift(myPost);
       this.step = 0;
     },
-    now() {
-      return new Date(); // 현재 시간 출력
-    },
+    ...mapMutations(["setMore", "countLikes", "plusAge"]),
   },
 };
 </script>
