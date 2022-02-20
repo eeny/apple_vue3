@@ -14,6 +14,9 @@
   <button @click="$store.commit('changeName')">이름버튼</button>
   <button @click="$store.commit('plusAge', 10)">나이버튼</button>
 
+  <p>{{ $store.state.more }}</p>
+  <button @click="$store.dispatch('getData')">더보기</button>
+
   <Container
     :filterName="filterName"
     :postdata="postdata"
