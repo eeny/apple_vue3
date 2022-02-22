@@ -19,10 +19,10 @@
   <button @click="$store.dispatch('getData')">더보기</button> -->
 
   <!-- Vuex - mapState, mapMutations 예시용 코드 -->
-  <p>{{ newName }} {{ age }} {{ likes }}</p>
+  <!-- <p>{{ newName }} {{ age }} {{ likes }}</p>
 
   <h4>안녕 {{ $store.state.age }}</h4>
-  <button @click="plusAge(10)">나이버튼</button>
+  <button @click="plusAge(10)">나이버튼</button> -->
 
   <Container
     :filterName="filterName"
