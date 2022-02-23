@@ -47,13 +47,17 @@
       <div class="write">
         <!-- 내가 한 방법 (초기에 write!가 안나타난다. 변수를 사용해서) -->
         <!-- <textarea v-model="text" @input="$emit('text', text)" class="write-box">
-write!</textarea
-        > -->
+              write!</textarea> -->
         <!-- 선생님 정답 (따로 변수를 안 만들어도 된다) -->
         <textarea @input="$emit('text', $event.target.value)" class="write-box">
 write!</textarea
         >
       </div>
+    </div>
+
+    <!-- 팔로워 페이지 -->
+    <div v-if="step == 3">
+      <MyPage />
     </div>
   </div>
 </template>
@@ -61,6 +65,7 @@ write!</textarea
 <script>
 import Post from "./Post.vue";
 import FilterBox from "./FilterBox.vue";
+import MyPage from "./MyPage.vue";
 
 export default {
   name: "Container",
@@ -106,6 +111,7 @@ export default {
   components: {
     Post,
     FilterBox,
+    MyPage,
   },
 };
 </script>

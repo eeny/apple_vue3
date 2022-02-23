@@ -54,7 +54,7 @@ export default {
     return {
       postdata: postdata,
       moreCount: 0,
-      step: 0,
+      step: 3,
       imgUrl: "",
       myText: "",
       filterName: "",
